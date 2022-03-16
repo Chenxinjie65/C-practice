@@ -7,55 +7,54 @@ typedef struct{
 	int length;
 }Sqlist;
 Sqlist a,b,c;
-/*º¯ÊıµÄÉùÃ÷¡ª¡ª¡ª¡ª´´½¨¡¢Êä³ö¡¢²åÈë¡¢É¾³ı¡¢²éÕÒ
-cha(&a,1,2);out(a);
-	 d=delet(&a,2);
-	 printf("\n É¾³ıµÄÔªËØÊÇ%d",d);*/
+/*å‡½æ•°çš„å£°æ˜â€”â€”â€”â€”åˆ›å»ºã€è¾“å‡ºã€æ’å…¥ã€åˆ é™¤ã€æŸ¥æ‰¾*/
 void creat(Sqlist *m);
 void out(Sqlist m);
 void cha(Sqlist *m,Elemtype b,int c);
 int delet(Sqlist *m,int c);
 int look(Sqlist m,Elemtype b);
-/*Ö÷º¯Êı*/
+/*ä¸»å‡½æ•°*/
 int main(){
 	int d,e;
 	 creat(&a); out(a);
-	 
+	 cha(&a,1,2);out(a);
+	 d=delet(&a,2);
+	 printf("\n åˆ é™¤çš„å…ƒç´ æ˜¯%d",d);
 	 e=look(a,5);
-	 printf("\n 5ÊÇµÚ%d¸öÔªËØ",e);
+	 printf("\n 5æ˜¯ç¬¬%dä¸ªå…ƒç´ ",e);
 }
-/*Ë³Ğò±íµÄ´´½¨*/
+/*é¡ºåºè¡¨çš„åˆ›å»º*/
 void creat(Sqlist *m){
 	int i;
-	printf("Ë³Ğò±íµÄ³¤¶ÈÎª£º\n");
+	printf("é¡ºåºè¡¨çš„é•¿åº¦ä¸ºï¼š\n");
 	scanf("%d",&m->length);
 	for(i=0;i<m->length;i++){
-		printf("\nÇëÊäÈëµÚ%d¸öÊı¾İ£º",i+1);
+		printf("\nè¯·è¾“å…¥ç¬¬%dä¸ªæ•°æ®ï¼š",i+1);
 		scanf("%d",&(m->a[i]));
 	}	
 }
-/*Ë³Ğò±íµÄÊä³ö*/
+/*é¡ºåºè¡¨çš„è¾“å‡º*/
 void out(Sqlist m){
 	int i;
 	printf("\n");
 	for(i=0;i<=m.length-1;i++)
 	printf("\n %10d",m.a[i]);
 }
-/*Ë³Ğò±íµÄ²åÈë,ÔÚµÚc¸öÎ»ÖÃ²åÈëÔªËØb*/
+/*é¡ºåºè¡¨çš„æ’å…¥,åœ¨ç¬¬cä¸ªä½ç½®æ’å…¥å…ƒç´ b*/
 void cha(Sqlist *m,Elemtype b,int c){
 	int i;
 	if(m->length==MAXSIZE) printf("\n overflow!");
-	else if(c<1||c>m->length+1) printf("\n Error£¡");
+	else if(c<1||c>m->length+1) printf("\n Errorï¼");
 	else {
 	m->length=m->length+1;
 	for(i=m->length-2;i>=c-1;i--) m->a[i+1]=m->a[i];
 	m->a[c-1]=b;
          }
 }
-/*Ë³Ğò±íµÄÉ¾³ı,É¾³ıµÚc¸öÎ»ÖÃµÄÔªËØ²¢·µ»ØÆäÖµ*/
+/*é¡ºåºè¡¨çš„åˆ é™¤,åˆ é™¤ç¬¬cä¸ªä½ç½®çš„å…ƒç´ å¹¶è¿”å›å…¶å€¼*/
 int delet(Sqlist *m,int c){
 	int x,j;
-	if(m->length==0)printf("ÊÇ¿Õ±í");
+	if(m->length==0)printf("æ˜¯ç©ºè¡¨");
 	else if(c<1||c>m->length) {
 	printf("Error"); 
     x=-1;}
@@ -66,14 +65,14 @@ int delet(Sqlist *m,int c){
 	}
 	return x;	
 }
-/*Ë³Ğò±íµÄ²éÕÒ*/
+/*é¡ºåºè¡¨çš„æŸ¥æ‰¾*/
 int look(Sqlist m,Elemtype b){
 	int i,j; j=0;
 	for(i=0;i<=m.length-1;i++){
 		if(m.a[i]==b) {
 		j++;
 		return (i+1);
-		break;}        /*ÓÃbreakµÄ»°Ö»ÄÜÕÒ³ö b µÚÒ»´Î³öÏÖµÄÎ»ÖÃ£¬Èç¹ûÓĞ¶à¸ö b £¬ÎÒ²ÂÓ¦¸ÃÒªÊä³öÒ»¸öÊı×é*/
+		break;}        /*ç”¨breakçš„è¯åªèƒ½æ‰¾å‡º b ç¬¬ä¸€æ¬¡å‡ºç°çš„ä½ç½®ï¼Œå¦‚æœæœ‰å¤šä¸ª b ï¼Œæˆ‘çŒœåº”è¯¥è¦è¾“å‡ºä¸€ä¸ªæ•°ç»„*/
 	}
-	if(j=0) return -1;   /*²»ÖªµÀÎªÊ²Ã´×îºóÊä³öµÄÊÇ 0 ,¶ø²»ÊÇ -1 */
+	if(j=0) return -1;   /*ä¸çŸ¥é“ä¸ºä»€ä¹ˆæœ€åè¾“å‡ºçš„æ˜¯ 0 ,è€Œä¸æ˜¯ -1 */
 }
